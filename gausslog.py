@@ -49,7 +49,7 @@ if uploaded_file is not None:
         elif Linedata[:2] == ["Frequencies", "--"] and FreqChk:
             Firstfreq, Secondfreq = Linedata[2], Linedata[3]
             imaginary_count = sum(float(freq) < 0 for freq in [Firstfreq, Secondfreq])
-            st.text(f"Number of imaginary frequency = {imaginary_count}")
+            # st.text(f"Number of imaginary frequency = {imaginary_count}")
             FreqChk = False
         elif Linedata[1:3] == ["Optimized", "Parameters"]:
             OptFlag = True

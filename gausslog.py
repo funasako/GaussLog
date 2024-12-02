@@ -49,7 +49,7 @@ if uploaded_file is not None:
         elif Linedata[:2] == ["Frequencies", "--"] and FreqChk:
             Firstfreq, Secondfreq = Linedata[2], Linedata[3]
             imaginary_count = sum(float(freq) < 0 for freq in [Firstfreq, Secondfreq])
-            st.write(f"\nNumber of imaginary frequency = {imaginary_count}")
+            st.text(f"Number of imaginary frequency = {imaginary_count}")
             FreqChk = False
         elif Linedata[1:3] == ["Optimized", "Parameters"]:
             OptFlag = True
@@ -59,7 +59,7 @@ if uploaded_file is not None:
                 st.text(f"RMS_Force {RMS_Force}")
                 st.text(f"Maximum_Displacement {Maximum_Displacement}")
                 st.text(f"RMS_Displacement {RMS_Displacement}")
-                st.text(f"Number of imaginary frequency 1 = {imaginary_count}")
+                # st.text(f"Number of imaginary frequency 1 = {imaginary_count}")
                 OptChk = False
         elif Linedata[:2] == ["Standard", "orientation:"]:
             PrintFlag = OptFlag

@@ -11,7 +11,7 @@ st.write("3. 別のLOGファイルを処理する場合は、続けてドラッ�
 st.write("")
 
 # ファイルをアップロードする
-uploaded_file = st.file_uploader("LOGファイルをアップロードしてください。", type=["log", "txt"])
+uploaded_file = st.file_uploader("LOGファイルをアップロードしてください。", type=["log"])
 
 if uploaded_file is not None:
     # ファイルの内容を読み込む

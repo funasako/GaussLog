@@ -1,4 +1,5 @@
 import streamlit as st
+import os
 
 # ファイルをアップロードする
 uploaded_file = st.file_uploader("LOGファイルをアップロードしてください。", type=["log", "txt"])
@@ -7,6 +8,8 @@ if uploaded_file is not None:
     # ファイルの内容を読み込む
     content = uploaded_file.read().decode("utf-8")
     lines = content.splitlines()
+    file_name = uploaded_file.name
+    base_name = os.path.splitext(file_name)[0]  # 拡張子を除去
     
     # パラメーター
     number_atom = {
@@ -27,6 +30,7 @@ if uploaded_file is not None:
     energy_data = []
     imaginary_count = 0
     EE = None
+    result_content = ""
 
     # 構造最適化の処理
     for line in lines:
@@ -55,11 +59,6 @@ if uploaded_file is not None:
             OptFlag = True
             if OptChk:
                 st.text("--- Optimization Results ---")
-                # st.text(f"Maximum_Force {Maximum_Force}")
-                # st.text(f"RMS_Force {RMS_Force}")
-                # st.text(f"Maximum_Displacement {Maximum_Displacement}")
-                # st.text(f"RMS_Displacement {RMS_Displacement}")
-                # st.text(f"Number of imaginary frequency 1 = {imaginary_count}")
                 optimization_results = [
                     f"Maximum_Force {Maximum_Force}",
                     f"RMS_Force {RMS_Force}",
@@ -69,6 +68,9 @@ if uploaded_file is not None:
                 ]
                 st.text("\n".join(optimization_results))  # 結果を1行ごとに表示し、余分な改行を削除
                 st.text("\n")
+                # 書き出し用
+                result_content += "--- Optimization Results ---\n"
+                result_content += "\n".join(optimization_results) + "\n"
                 OptChk = False
         elif Linedata[:2] == ["Standard", "orientation:"]:
             PrintFlag = OptFlag
@@ -103,12 +105,26 @@ if uploaded_file is not None:
         st.text("\n--- Energies ---")
         st.text(energy_output)  # 結果をまとめて表示
         st.text("\n")
+        # 書き出し用
+        result_content += "\n"--- Energies ---\n"
+        result_content += "\n".join(energy_output) + "\n" 
 
 
     # 最適化構造の座標を表示
     if geometry_data:
         st.text("\n---Optimized Geometry ---")
         st.text("\n".join(geometry_data))  # 余分な改行を削除するため、joinを使用
+        # 書き出し用
+        result_content += "\n---Optimized Geometry ---\n"
+        result_content += "\n".join(geometry_data)
+
+    # ダウンロード用にファイルを保存
+    st.download_button(
+        label="Download Result",
+        data=result_content,
+        file_name=result_file_name,
+        mime="text/plain"
+    )
     
 
 

@@ -59,7 +59,7 @@ if uploaded_file is not None:
                 st.text(f"RMS_Force {RMS_Force}")
                 st.text(f"Maximum_Displacement {Maximum_Displacement}")
                 st.text(f"RMS_Displacement {RMS_Displacement}")
-                st.text(f"Number of imaginary frequency = {imaginary_count}")
+                st.text(f"Number of imaginary frequency 1 = {imaginary_count}")
                 OptChk = False
         elif Linedata[:2] == ["Standard", "orientation:"]:
             PrintFlag = OptFlag

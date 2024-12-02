@@ -69,10 +69,10 @@ if uploaded_file is not None:
             OptFlag = True
             if OptChk:
                 optimization_results = [
-                    f"Maximum Force\t{Maximum_Force}",
-                    f"RMS_Force\t{RMS_Force}",
-                    f"Maximum Displacement\t{Maximum_Displacement}",
-                    f"RMS Displacement\t{RMS_Displacement}",
+                    f"Maximum\tForce\t{Maximum_Force}",
+                    f"RMS\tForce\t{RMS_Force}",
+                    f"Maximum\tDisplacement\t{Maximum_Displacement}",
+                    f"RMS\tDisplacement\t{RMS_Displacement}",
                     f"Number of imaginary frequency = \t{imaginary_count}"
                 ]
                 # 書き出し用

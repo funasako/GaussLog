@@ -122,7 +122,7 @@ if uploaded_file is not None:
         # st.text("\n---Optimized Geometry ---")
         # st.text("\n".join(geometry_data))  # 余分な改行を削除するため、joinを使用
         # 書き出し用
-        result_content += "\n---Optimized Geometry ---\n"
+        result_content += "\n--- Optimized Geometry ---\n"
         result_content += "\n".join(geometry_data)
 
     # 保存するファイルの名前を設定

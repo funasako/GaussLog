@@ -54,7 +54,7 @@ if uploaded_file is not None:
         elif Linedata[1:3] == ["Optimized", "Parameters"]:
             OptFlag = True
             if OptChk:
-                # st.text("--- Optimization ---")
+                st.text("--- Optimization Results---")
                 # st.text(f"Maximum_Force {Maximum_Force}")
                 # st.text(f"RMS_Force {RMS_Force}")
                 # st.text(f"Maximum_Displacement {Maximum_Displacement}")

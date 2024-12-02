@@ -73,7 +73,7 @@ if uploaded_file is not None:
                     f"RMS_Force\t{RMS_Force}",
                     f"Maximum Displacement\t{Maximum_Displacement}",
                     f"RMS Displacement\t{RMS_Displacement}",
-                    f"Number of imaginary frequency =\t{imaginary_count}"
+                    f"Number of imaginary frequency = \t{imaginary_count}"
                 ]
                 # 書き出し用
                 result_content += "--- Optimization Results ---\n"
@@ -108,7 +108,7 @@ if uploaded_file is not None:
     if energy_data:
         energy_output = "\n".join(energy_data)  # energy_dataを1つの文字列にまとめる
         if EE:
-            energy_output += f"\nElectronic Energy = {EE}"  # EEを最後に追加
+            f"\nElectronic Energy =    {EE}" += energy_output  # EEを最後に追加
         # st.text("\n--- Energies ---")
         # st.text(energy_output)  # 結果をまとめて表示
         # st.text("\n")

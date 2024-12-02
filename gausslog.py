@@ -108,7 +108,7 @@ if uploaded_file is not None:
     if energy_data:
         energy_output = "\n".join(energy_data)  # energy_dataを1つの文字列にまとめる
         if EE:
-            energy_output += f"\nElectronic Energy =    {EE}"  # EEを最後に追加
+            energy_output += f"\nElectronic Energy =                                 {EE}"  # EEを最後に追加
         # st.text("\n--- Energies ---")
         # st.text(energy_output)  # 結果をまとめて表示
         # st.text("\n")

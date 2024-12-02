@@ -75,9 +75,6 @@ if uploaded_file is not None:
                     f"RMS Displacement\t{RMS_Displacement}",
                     f"Number of imaginary frequency =\t{imaginary_count}"
                 ]
-                # st.text("--- Optimization Results ---")
-                # st.text("\n".join(optimization_results))  # 結果を1行ごとに表示し、余分な改行を削除
-                # st.text("\n")
                 # 書き出し用
                 result_content += "--- Optimization Results ---\n"
                 result_content += "\n".join(optimization_results) + "\n"

@@ -7,7 +7,7 @@ st.set_page_config(page_title="GaussLog", page_icon=":bookmark_tabs:", )
 st.title("GaussLog")
 st.write("※動作にはインターネット接続が必要です。")
 st.write("1. 構造最適化後のLOGファイルを以下にドラッグ&ドロップする。1度に1ファイルのみ可")
-st.write("2. ページ最下部のボタンから結果のテキストファイルをダウンロード")
+st.write("2. "Download Result"ボタンからテキストファイルをダウンロード")
 st.write("3. 別のLOGファイルを処理する場合は、続けてドラッグ&ドロップする（古い結果は削除）。")
 st.write("")
 

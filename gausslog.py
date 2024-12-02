@@ -60,6 +60,14 @@ if uploaded_file is not None:
                 st.text(f"Maximum_Displacement {Maximum_Displacement}")
                 st.text(f"RMS_Displacement {RMS_Displacement}")
                 # st.text(f"Number of imaginary frequency 1 = {imaginary_count}")
+                optimization_results = [
+                    f"Maximum_Force {Maximum_Force}",
+                    f"RMS_Force {RMS_Force}",
+                    f"Maximum_Displacement {Maximum_Displacement}",
+                    f"RMS_Displacement {RMS_Displacement}",
+                    f"Number of imaginary frequency = {imaginary_count}"
+                ]
+    st.text("\n".join(optimization_results))  # 結果を1行ごとに表示し、余分な改行を削除
                 OptChk = False
         elif Linedata[:2] == ["Standard", "orientation:"]:
             PrintFlag = OptFlag

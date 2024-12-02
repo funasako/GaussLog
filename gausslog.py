@@ -54,7 +54,7 @@ if uploaded_file is not None:
         elif Linedata[1:3] == ["Optimized", "Parameters"]:
             OptFlag = True
             if OptChk:
-                st.text("--- Optimization Results---")
+                st.text("--- Optimization Results ---")
                 # st.text(f"Maximum_Force {Maximum_Force}")
                 # st.text(f"RMS_Force {RMS_Force}")
                 # st.text(f"Maximum_Displacement {Maximum_Displacement}")
@@ -99,13 +99,13 @@ if uploaded_file is not None:
         energy_output = "\n".join(energy_data)  # energy_dataを1つの文字列にまとめる
         if EE:
             energy_output += f"\nElectronic Energy = {EE}"  # EEを最後に追加
-        st.text("\n--- Energies ---")
+        st.text("\n\n--- Energies ---")
         st.text(energy_output)  # 結果をまとめて表示
 
 
     # 最適化構造の座標を表示
     if geometry_data:
-        st.text("\n---Optimized Geometry---")
+        st.text("\n\n---Optimized Geometry ---")
         st.text("\n".join(geometry_data))  # 余分な改行を削除するため、joinを使用
     
 

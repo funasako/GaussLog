@@ -118,6 +118,9 @@ if uploaded_file is not None:
         result_content += "\n---Optimized Geometry ---\n"
         result_content += "\n".join(geometry_data)
 
+    # 保存するファイルの名前を設定
+    result_file_name = f"{base_name}_result.txt"
+    
     # ダウンロード用にファイルを保存
     st.download_button(
         label="Download Result",

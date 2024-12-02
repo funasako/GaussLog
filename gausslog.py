@@ -107,7 +107,7 @@ if uploaded_file is not None:
         st.text("\n")
         # 書き出し用
         result_content += "\n--- Energies ---\n"
-        result_content += "\n" + energy_output + "\n" 
+        result_content += energy_output + "\n" 
 
 
     # 最適化構造の座標を表示

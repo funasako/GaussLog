@@ -137,5 +137,5 @@ if uploaded_file is not None:
     )
     
     st.text("\n")    
-    st.text(result_content)
+    st.write(result_content)
 

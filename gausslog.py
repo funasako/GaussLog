@@ -139,5 +139,6 @@ if uploaded_file is not None:
         mime="text/plain"
     )
     
-
+    st.text("\n")    
+    st.text(result_content)
 

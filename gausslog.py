@@ -98,7 +98,13 @@ if uploaded_file is not None:
     if geometry_data:
         st.text("\n---Optimized Geometry---")
         st.text("\n".join(geometry_data))  # 余分な改行を削除するため、joinを使用
-
+        
+    if energy_data:
+        energy_output = "\n".join(energy_data)  # energy_dataを1つの文字列にまとめる
+        if EE:
+            energy_output += f"\nElectronic Energy = {EE}"  # EEを最後に追加
+        st.text(energy_output)  # 結果をまとめて表示
+    
     if energy_data:
         st.text("\n--- Energies ---")
         st.text("\n".join(energy_data))  # 余分な改行を削除するため、joinを使用

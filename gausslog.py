@@ -79,7 +79,7 @@ if uploaded_file is not None:
             atom_info = number_atom.get(Linedata[1], "Unknown")
             geometry_data.append(f"{atom_info} {Linedata[3]} {Linedata[4]} {Linedata[5]}")
     
-    # 熱力学的諸量処理
+    # 熱力学的諸量の処理
     PrintFlag = False
     for line in lines:
         Linedata = line.split()
@@ -93,22 +93,20 @@ if uploaded_file is not None:
             PrintFlag = False
         if Linedata[:2] == ["SCF", "Done:"]:
             EE = Linedata[4]
-
-    # 結果を表示
-    if geometry_data:
-        st.text("\n---Optimized Geometry---")
-        st.text("\n".join(geometry_data))  # 余分な改行を削除するため、joinを使用
-        
+       
+    # 熱力学的諸量の結果を表示    
     if energy_data:
         energy_output = "\n".join(energy_data)  # energy_dataを1つの文字列にまとめる
         if EE:
             energy_output += f"\nElectronic Energy = {EE}"  # EEを最後に追加
-        st.text(energy_output)  # 結果をまとめて表示
-    
-    if energy_data:
         st.text("\n--- Energies ---")
-        st.text("\n".join(energy_data))  # 余分な改行を削除するため、joinを使用
-        if EE:
-            st.text(f"Electronic Energy = {EE}")
+        st.text(energy_output)  # 結果をまとめて表示
+
+
+    # 最適化構造の座標を表示
+    if geometry_data:
+        st.text("\n---Optimized Geometry---")
+        st.text("\n".join(geometry_data))  # 余分な改行を削除するため、joinを使用
+    
 
 

@@ -1,7 +1,6 @@
 import streamlit as st
 import os
 
-
 # タイトル等
 st.set_page_config(page_title="GaussLog", page_icon=":bookmark_tabs:", )
 st.title("GaussLog")

@@ -19,17 +19,14 @@ if uploaded_file is not None:
     }
 
     # 初期値設定
-    Maximum_Force = "Null"
-    RMS_Force = "Null"
-    Maximum_Displacement = "Null"
-    RMS_Displacement = "Null"
-    Firstfreq = "Null"
-    Secondfreq = "Null"
-    OptChk = True
-    FreqChk = True
-    OptFlag = False
-    PrintFlag = False
-    PrintedFlag = False
+    Maximum_Force = RMS_Force = Maximum_Displacement = RMS_Displacement = "Null"
+    Firstfreq = Secondfreq = "Null"
+    OptChk = FreqChk = True
+    OptFlag = PrintFlag = PrintedFlag = False
+    geometry_data = []
+    energy_data = []
+    imaginary_count = 0
+    EE = None
 
     # 構造最適化の処理
     for line in lines:

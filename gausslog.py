@@ -69,11 +69,11 @@ if uploaded_file is not None:
             OptFlag = True
             if OptChk:
                 optimization_results = [
-                    f"Maximum_Force {Maximum_Force}",
-                    f"RMS_Force {RMS_Force}",
-                    f"Maximum_Displacement {Maximum_Displacement}",
-                    f"RMS_Displacement {RMS_Displacement}",
-                    f"Number of imaginary frequency = {imaginary_count}"
+                    f"Maximum Force\t{Maximum_Force}",
+                    f"RMS_Force\t{RMS_Force}",
+                    f"Maximum Displacement\t{Maximum_Displacement}",
+                    f"RMS Displacement\t{RMS_Displacement}",
+                    f"Number of imaginary frequency =\t{imaginary_count}"
                 ]
                 # st.text("--- Optimization Results ---")
                 # st.text("\n".join(optimization_results))  # 結果を1行ごとに表示し、余分な改行を削除

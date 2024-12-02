@@ -68,7 +68,6 @@ if uploaded_file is not None:
         elif Linedata[1:3] == ["Optimized", "Parameters"]:
             OptFlag = True
             if OptChk:
-                st.text("--- Optimization Results ---")
                 optimization_results = [
                     f"Maximum_Force {Maximum_Force}",
                     f"RMS_Force {RMS_Force}",
@@ -76,8 +75,9 @@ if uploaded_file is not None:
                     f"RMS_Displacement {RMS_Displacement}",
                     f"Number of imaginary frequency = {imaginary_count}"
                 ]
-                st.text("\n".join(optimization_results))  # 結果を1行ごとに表示し、余分な改行を削除
-                st.text("\n")
+                # st.text("--- Optimization Results ---")
+                # st.text("\n".join(optimization_results))  # 結果を1行ごとに表示し、余分な改行を削除
+                # st.text("\n")
                 # 書き出し用
                 result_content += "--- Optimization Results ---\n"
                 result_content += "\n".join(optimization_results) + "\n"
@@ -112,9 +112,9 @@ if uploaded_file is not None:
         energy_output = "\n".join(energy_data)  # energy_dataを1つの文字列にまとめる
         if EE:
             energy_output += f"\nElectronic Energy = {EE}"  # EEを最後に追加
-        st.text("\n--- Energies ---")
-        st.text(energy_output)  # 結果をまとめて表示
-        st.text("\n")
+        # st.text("\n--- Energies ---")
+        # st.text(energy_output)  # 結果をまとめて表示
+        # st.text("\n")
         # 書き出し用
         result_content += "\n--- Energies ---\n"
         result_content += energy_output + "\n" 
@@ -122,8 +122,8 @@ if uploaded_file is not None:
 
     # 最適化構造の座標を表示
     if geometry_data:
-        st.text("\n---Optimized Geometry ---")
-        st.text("\n".join(geometry_data))  # 余分な改行を削除するため、joinを使用
+        # st.text("\n---Optimized Geometry ---")
+        # st.text("\n".join(geometry_data))  # 余分な改行を削除するため、joinを使用
         # 書き出し用
         result_content += "\n---Optimized Geometry ---\n"
         result_content += "\n".join(geometry_data)

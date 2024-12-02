@@ -106,7 +106,7 @@ if uploaded_file is not None:
         st.text(energy_output)  # 結果をまとめて表示
         st.text("\n")
         # 書き出し用
-        result_content += "\n"--- Energies ---\n"
+        result_content += "\n--- Energies ---\n"
         result_content += "\n".join(energy_output) + "\n" 
 
 

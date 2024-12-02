@@ -19,14 +19,17 @@ if uploaded_file is not None:
     }
 
     # 初期値設定
-    Maximum_Force = RMS_Force = Maximum_Displacement = RMS_Displacement = "Null"
-    Firstfreq = Secondfreq = "Null"
-    OptChk = FreqChk = True
-    OptFlag = PrintFlag = PrintedFlag = False
-    geometry_data = []
-    energy_data = []
-    imaginary_count = 0
-    EE = None
+    Maximum_Force = "Null"
+    RMS_Force = "Null"
+    Maximum_Displacement = "Null"
+    RMS_Displacement = "Null"
+    Firstfreq = "Null"
+    Secondfreq = "Null"
+    OptChk = True
+    FreqChk = True
+    OptFlag = False
+    PrintFlag = False
+    PrintedFlag = False
 
     # 構造最適化の処理
     for line in lines:
@@ -49,17 +52,16 @@ if uploaded_file is not None:
         elif Linedata[:2] == ["Frequencies", "--"] and FreqChk:
             Firstfreq, Secondfreq = Linedata[2], Linedata[3]
             imaginary_count = sum(float(freq) < 0 for freq in [Firstfreq, Secondfreq])
-            # st.text(f"Number of imaginary frequency = {imaginary_count}")
+            st.write(f"\nNumber of imaginary frequency = {imaginary_count}")
             FreqChk = False
         elif Linedata[1:3] == ["Optimized", "Parameters"]:
             OptFlag = True
             if OptChk:
-                # st.text("--- Optimization ---")
-                # st.text(f"Maximum_Force {Maximum_Force}")
-                # st.text(f"RMS_Force {RMS_Force}")
-                # st.text(f"Maximum_Displacement {Maximum_Displacement}")
-                # st.text(f"RMS_Displacement {RMS_Displacement}")
-                # st.text(f"Number of imaginary frequency 1 = {imaginary_count}")
+                st.write(f"Maximum_Force        {Maximum_Force}")
+                st.write(f"RMS_Force            {RMS_Force}")
+                st.write(f"Maximum_Displacement {Maximum_Displacement}")
+                st.write(f"RMS_Displacement     {RMS_Displacement}")         
+                st.write("\n---Optimized Geometry---")
                 OptChk = False
         elif Linedata[:2] == ["Standard", "orientation:"]:
             PrintFlag = OptFlag
@@ -69,20 +71,11 @@ if uploaded_file is not None:
             PrintFlag = False
         elif PrintFlag and Linedata[0].isdigit() and not PrintedFlag:
             atom_info = number_atom.get(Linedata[1], "Unknown")
-            geometry_data.append(f"{atom_info} {Linedata[3]} {Linedata[4]} {Linedata[5]}")
+            st.text(f"{atom_info} {Linedata[3]} {Linedata[4]} {Linedata[5]}")
 
-    # 最適化結果の詳細を一行にまとめる
-    optimization_results = [
-        f"Maximum_Force {Maximum_Force}",
-        f"RMS_Force {RMS_Force}",
-        f"Maximum_Displacement {Maximum_Displacement}",
-        f"RMS_Displacement {RMS_Displacement}",
-        f"Number of imaginary frequency = {imaginary_count}"
-    ]
-    st.text("\n".join(optimization_results))  # 結果を1行ごとに表示し、余分な改行を削除
-    
-    # 熱力学的諸量処理
+    # 熱力学的諸量
     PrintFlag = False
+    EE = None
     for line in lines:
         Linedata = line.split()
         if len(Linedata) < 2:
@@ -90,21 +83,10 @@ if uploaded_file is not None:
         if Linedata[:2] == ["Zero-point", "correction="]:
             PrintFlag = True
         if PrintFlag:
-            energy_data.append(line.strip())
+            st.text(line)
         if len(Linedata) > 5 and Linedata[4:6] == ["thermal", "Free"]:
             PrintFlag = False
         if Linedata[:2] == ["SCF", "Done:"]:
             EE = Linedata[4]
-
-    # 結果を表示
-    if geometry_data:
-        st.text("\n---Optimized Geometry---")
-        st.text("\n".join(geometry_data))  # 余分な改行を削除するため、joinを使用
-
-    if energy_data:
-        st.text("\n--- Energies ---")
-        st.text("\n".join(energy_data))  # 余分な改行を削除するため、joinを使用
-        if EE:
-            st.text(f"Electronic Energy = {EE}")
-
-
+        if line == lines[-1] and EE is not None:
+            st.write(f"Electronic Energy = {EE}")

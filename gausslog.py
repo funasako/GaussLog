@@ -54,11 +54,11 @@ if uploaded_file is not None:
         elif Linedata[1:3] == ["Optimized", "Parameters"]:
             OptFlag = True
             if OptChk:
-                st.text("--- Optimization ---")
-                st.text(f"Maximum_Force {Maximum_Force}")
-                st.text(f"RMS_Force {RMS_Force}")
-                st.text(f"Maximum_Displacement {Maximum_Displacement}")
-                st.text(f"RMS_Displacement {RMS_Displacement}")
+                # st.text("--- Optimization ---")
+                # st.text(f"Maximum_Force {Maximum_Force}")
+                # st.text(f"RMS_Force {RMS_Force}")
+                # st.text(f"Maximum_Displacement {Maximum_Displacement}")
+                # st.text(f"RMS_Displacement {RMS_Displacement}")
                 # st.text(f"Number of imaginary frequency 1 = {imaginary_count}")
                 OptChk = False
         elif Linedata[:2] == ["Standard", "orientation:"]:
@@ -71,6 +71,16 @@ if uploaded_file is not None:
             atom_info = number_atom.get(Linedata[1], "Unknown")
             geometry_data.append(f"{atom_info} {Linedata[3]} {Linedata[4]} {Linedata[5]}")
 
+    # 最適化結果の詳細を一行にまとめる
+    optimization_results = [
+        f"Maximum_Force {Maximum_Force}",
+        f"RMS_Force {RMS_Force}",
+        f"Maximum_Displacement {Maximum_Displacement}",
+        f"RMS_Displacement {RMS_Displacement}",
+        f"Number of imaginary frequency = {imaginary_count}"
+    ]
+    st.text("\n".join(optimization_results))  # 結果を1行ごとに表示し、余分な改行を削除
+    
     # 熱力学的諸量処理
     PrintFlag = False
     for line in lines:
@@ -97,12 +107,4 @@ if uploaded_file is not None:
         if EE:
             st.text(f"Electronic Energy = {EE}")
 
-    # 最適化結果の詳細を一行にまとめる
-    optimization_results = [
-        f"Maximum_Force {Maximum_Force}",
-        f"RMS_Force {RMS_Force}",
-        f"Maximum_Displacement {Maximum_Displacement}",
-        f"RMS_Displacement {RMS_Displacement}",
-        f"Number of imaginary frequency = {imaginary_count}"
-    ]
-    st.text("\n".join(optimization_results))  # 結果を1行ごとに表示し、余分な改行を削除
+

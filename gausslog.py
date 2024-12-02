@@ -65,7 +65,7 @@ if uploaded_file is not None:
                     f"RMS_Force {RMS_Force}",
                     f"Maximum_Displacement {Maximum_Displacement}",
                     f"RMS_Displacement {RMS_Displacement}",
-                    f"Number of imaginary frequency = {imaginary_count}"
+                    f"Number of imaginary frequency = {imaginary_count}\n"
                 ]
                 st.text("\n".join(optimization_results))  # 結果を1行ごとに表示し、余分な改行を削除
                 OptChk = False
@@ -98,14 +98,14 @@ if uploaded_file is not None:
     if energy_data:
         energy_output = "\n".join(energy_data)  # energy_dataを1つの文字列にまとめる
         if EE:
-            energy_output += f"\nElectronic Energy = {EE}"  # EEを最後に追加
-        st.text("\n\n--- Energies ---")
+            energy_output += f"\nElectronic Energy = {EE}\n"  # EEを最後に追加
+        st.text("\n--- Energies ---")
         st.text(energy_output)  # 結果をまとめて表示
 
 
     # 最適化構造の座標を表示
     if geometry_data:
-        st.text("\n\n---Optimized Geometry ---")
+        st.text("\n---Optimized Geometry ---")
         st.text("\n".join(geometry_data))  # 余分な改行を削除するため、joinを使用
     
 
